@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "977671322128",
+    "project_id": "mysecondfirebase-79c6e",
+    "storage_bucket": "mysecondfirebase-79c6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977671322128:android:2b7147ccc7a195ffd0a895",
+        "android_client_info": {
+          "package_name": "com.karon.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977671322128-m2nk9gqrl41kd93h4d0aep58hteuun6a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karon.chatapp",
+            "certificate_hash": "d3eb977279200f1304bda7f8bddf60af0b73c5d2"
+          }
+        },
+        {
+          "client_id": "977671322128-h914pjh9sh48733he7fj69huc7pg7ij2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyBf8oIyscrtVZI-HlQA0ftcjF5hSmEOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977671322128-h914pjh9sh48733he7fj69huc7pg7ij2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "977671322128-e9puvaddhrjca05g4ms5c2n82cb4mb90.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.karon.chatapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
