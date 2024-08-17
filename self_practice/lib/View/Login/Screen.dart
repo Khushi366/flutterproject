@@ -30,22 +30,25 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: 20.0,),
 
             customTextField(
+
                 controller: controller.passwordController.value,
 
                 hintText: "Enter Password"
             ),
             SizedBox(height: 20.0,),
 
-
-            PrimaryButton(
+            Obx(() => controller.isLoading.value
+                ? CircularProgressIndicator() // Show loading indicator if `isLoading` is true
+            :PrimaryButton(
               btntext: 'Login',
               onclick: () {
                 controller.Login();
-                
+
 
               },
               btncolor: kButtonColor,
-            )
+
+            ))
 
 
           ],

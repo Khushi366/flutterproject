@@ -1,10 +1,11 @@
+import 'dart:convert'; // Import for json.encode
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:self_practice/Utility/MyHomePage/Screen.dart';
-import 'package:self_practice/services/ApiServices.dart';
 
-class LoginController extends GetxController{
-
+class LoginController extends GetxController {
   var usernameController = TextEditingController().obs;
   var passwordController = TextEditingController().obs;
 
@@ -13,34 +14,56 @@ class LoginController extends GetxController{
 
   @override
   void onInit() {
+    super.onInit();
+    // Pre-fill credentials for testing
     usernameController.value.text = 'emilys';
     passwordController.value.text = 'emilyspass';
-    super.onInit();
   }
 
+  Future<void> Login() async {
+    var params = {
+      "username": usernameController.value.text,
+      "password": passwordController.value.text,
+    };
 
-  Login() async
-  {
-    try
-    {
+    Uri url = Uri.parse("https://dummyjson.com/auth/login");
+
+    try {
       isLoading(true);
-      var params = {
-        "username":usernameController.value.text.toString(),
-        "password":passwordController.value.text.toString(),
-      };
-      var result = await ApiServices.insertProduct(params);
-      if(result==true)
-      {
-        usernameController.value.text="";
-        passwordController.value.text="";
-        Get.to(HomeScreen());
+
+      var response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(params), // Encode the params to JSON
+      );
+
+      log('Response status: ${response.statusCode}');
+      log('Response body: ${response.body}');
+
+      if (response.statusCode == 200) {
+        var jsonResponse = jsonDecode(response.body);
+        // Adjust the condition to check for the presence of a token
+        if (jsonResponse['token'] != null) {
+          log('Login successful');
+          Get.snackbar( "Success",jsonResponse["message"]??"Login successful",  snackPosition: SnackPosition.BOTTOM);
+          usernameController.value.clear();
+          passwordController.value.clear();
+
+          Get.to(() => HomeScreen()); // Navigate to HomeScreen
+        } else {
+          log('Login failed');
+          Get.snackbar( "Success",jsonResponse["message"]??"Login failed",snackPosition: SnackPosition.BOTTOM);
+        }
+      } else {
+        log('Request failed with status: ${response.statusCode}');
+        Get.snackbar("Error", "Request failed with status: ${response.statusCode}");
       }
-    }
-    finally
-    {
+    } catch (e) {
+      log('Exception occurred: $e');
+      Get.snackbar("Error", "An error occurred: $e");
+    } finally {
       isLoading(false);
     }
   }
-
 
 }
