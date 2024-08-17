@@ -61,7 +61,7 @@ class _MyFavListState extends State<MyFavList> {
                   trailing: IconButton(icon:Icon(Icons.delete),
                     onPressed: () async {
                     myfav!.remove(alldata![index].id.toString());
-                    SharedPreferences prefs = await SharedPreferences.getInstance() ;
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
                     prefs.setStringList("fav",myfav!);
                     log("item deleted and remaining items are: "+myfav.toString());
                     getdata();

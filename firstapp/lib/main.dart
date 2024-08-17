@@ -7,6 +7,7 @@ import 'package:firstapp/test.dart';
 import 'package:flutter/material.dart';
 
 import 'ActionBarExample.dart';
+import 'Addition.dart';
 import 'AdditionSharedPreferencesExample.dart';
 import 'AlertDialogAndTtfExample.dart';
 import 'BankPinCreatExample.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
        useMaterial3: false,
       ),
       //home:  DataTablePage(),
-      home:  DataTablePage(),
+      home:  Addition(),
       // routes: {
       //   "/second": (context) => SecondScreenExample(),
       //   "/first": (context) => SecondScreenExample(),

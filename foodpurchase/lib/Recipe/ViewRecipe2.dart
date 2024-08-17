@@ -123,6 +123,5 @@ class _Viewrecipe2State extends State<Viewrecipe2> {
       ):SizedBox(),
     );
   }
-
 }
 
