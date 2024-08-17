@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:self_practice/Utility/MyHomePage/Screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   var usernameController = TextEditingController().obs;
@@ -43,6 +44,8 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         var jsonResponse = jsonDecode(response.body);
         // Adjust the condition to check for the presence of a token
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString("isLogin","yes");
         if (jsonResponse['token'] != null) {
           log('Login successful');
           Get.snackbar( "Success",jsonResponse["message"]??"Login successful",  snackPosition: SnackPosition.BOTTOM);

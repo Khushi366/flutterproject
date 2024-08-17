@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:self_practice/Theme/AppColor.dart';
-import 'package:self_practice/View/Login/Controller.dart';
 import 'package:self_practice/Widget/MyTextBox.dart';
 import 'package:self_practice/Widget/PrimaryButton.dart';
+
+import 'Controller.dart';
 
 class LoginScreen extends StatelessWidget {
  final controller  = Get.put(LoginController());
@@ -27,29 +28,26 @@ class LoginScreen extends StatelessWidget {
               controller: controller.usernameController.value,
               hintText: "Enter Email ID"
             ),
+
             SizedBox(height: 20.0,),
 
             customTextField(
-
+                obscureText: true,
                 controller: controller.passwordController.value,
-
                 hintText: "Enter Password"
             ),
             SizedBox(height: 20.0,),
 
             Obx(() => controller.isLoading.value
                 ? CircularProgressIndicator() // Show loading indicator if `isLoading` is true
-            :PrimaryButton(
-              btntext: 'Login',
-              onclick: () {
-                controller.Login();
+                :PrimaryButton(
+                  btntext: 'Login',
+                  onclick: () {
+                    controller.Login();
+                  },
+                  btncolor: kButtonColor,
 
-
-              },
-              btncolor: kButtonColor,
-
-            ))
-
+                ))
 
           ],
         ),
