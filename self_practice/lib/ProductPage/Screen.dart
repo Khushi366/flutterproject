@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:self_practice/Utility/MyDrawer.dart';
 import 'Controller.dart'; // Import your ProductDetailsController
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class ProductDetailsScreen extends StatelessWidget {
               // Use ternary operator to check for null values
               controller.product.value.image != null
                   ? Center(
-                child: FadeInImage.assetNetwork(
+                  child: FadeInImage.assetNetwork(
                   placeholder: 'assets/placeholder.png', // Provide a valid placeholder
                   image: controller.product.value.image!,
                   width: 90,

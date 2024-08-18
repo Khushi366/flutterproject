@@ -44,10 +44,15 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         var jsonResponse = jsonDecode(response.body);
         // Adjust the condition to check for the presence of a token
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString("isLogin","yes");
-        if (jsonResponse['token'] != null) {
+
+        if (jsonResponse['token'] != null && jsonResponse['refreshToken'] != null) {
           log('Login successful');
+
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString("isLogin","yes");
+          await prefs.setString("token", jsonResponse['token']);
+          await prefs.setString("refreshToken", jsonResponse['refreshToken']);
+          await prefs.setString("username", jsonResponse['username']);
           Get.snackbar( "Success",jsonResponse["message"]??"Login successful",  snackPosition: SnackPosition.BOTTOM);
           usernameController.value.clear();
           passwordController.value.clear();

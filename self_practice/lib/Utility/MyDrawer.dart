@@ -1,48 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:self_practice/View/Profile/Controller.dart';
+import 'package:self_practice/View/Profile/Screen.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
-
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProfileController()); // Initialize ProfileController
+
     return Drawer(
       child: ListView(
-        // padding: const EdgeInsets.all(8.0),
         children: [
-          // UserAccountsDrawerHeader(
-          //   accountName: Text(""+firstName.toString()),
-          //   accountEmail: Text(""+email.toString()),
-          //
-          //   currentAccountPicture: image.isNotEmpty
-          //       ? FadeInImage.assetNetwork(
-          //     placeholder: '',
-          //     image: image,
-          //     width: 100,
-          //     placeholderErrorBuilder: (context, error, stackTrace) {
-          //       return SizedBox(
-          //           width: 5.0,
-          //           height: 6.0,
-          //           child: CircularProgressIndicator(color: Colors.white,));
-          //     },
-          //   ) : CircleAvatar(
-          //     child: Icon(Icons.person),
-          //   ),
-          //   decoration: BoxDecoration(
-          //     color: Color(0xFF233645),
-          //   ),
-          // ),
-
-
-          SizedBox(height: 50.0,),
+          Obx(() {
+            return UserAccountsDrawerHeader(
+              accountName: Text(controller.username.value),  // Display username
+              accountEmail: Text(controller.email.value),     // Display email
+              currentAccountPicture: controller.username.value.isNotEmpty
+                  ? CircleAvatar(
+                child: Text(controller.username.value[0].toUpperCase()),
+                backgroundColor: Colors.white,
+              )
+                  : CircleAvatar(
+                child: Icon(Icons.person),
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xFF233645),
+              ),
+            );
+          }),
 
           ListTile(
             leading: const Icon(Icons.person),
             title: const Text("Profile"),
             onTap: () {
-              //Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyProfile()));
-
+              Get.off(() => ProfileScreen());
             },
           ),
         ],
