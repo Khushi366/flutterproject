@@ -22,6 +22,16 @@ class LoginController extends GetxController {
   }
 
   Future<void> Login() async {
+
+    if ( usernameController.value.text.isEmpty || passwordController.value.text.isEmpty) {
+      Get.snackbar(
+        "Validation Error",
+        "Username and password cannot be empty.",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return; // Stop further execution
+    }
+
     var params = {
       "username": usernameController.value.text,
       "password": passwordController.value.text,
@@ -73,5 +83,4 @@ class LoginController extends GetxController {
       isLoading(false);
     }
   }
-
 }
