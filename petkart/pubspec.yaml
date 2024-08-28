@@ -76,6 +76,7 @@ flutter:
      - assets/img/intro1.png
      - assets/img/petkart.png
      - assets/img/petban.png
+     - assets/img/dogs.png
      - assets/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -10,6 +10,16 @@ import 'Controller.dart';
 class MyHomePage extends StatelessWidget {
   final controller = Get.put(HomeController());
 
+  final List<String> categoryImages = [
+    'assets/img/dogs.png',
+    'assets/img/cat.png',
+
+    'assets/img/fish.jfif',
+    'assets/img/bird.png',
+    'assets/img/rabbit.png',
+    'assets/img/hamster.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     var isTablet = DeviceLayout.isTablet(context);
@@ -97,7 +107,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 itemCount: 6,
                 itemBuilder: (BuildContext context, int index) {
-                  return buildCategory();
+                  return buildCategory(categoryImages[index]); // Pass the image path to buildCategory
                 },
               ),
               SizedBox(height: 50.0),
@@ -143,42 +153,33 @@ class MyHomePage extends StatelessWidget {
     );
 
   }
-  Widget buildCategory() {
-    // Example colors for demonstration
 
-
-    return Stack(
-      children: [
-        // Background container with rounded corners
-        Container(
+  Widget buildCategory(String imagePath) {
+    return  Card(
+      elevation: 5.0, // Adds shadow to the card
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0), // Same rounded corners as the original container
+        side: BorderSide(color: kBlack), // Border color and width
+      ),
+      child: Container(
+        alignment: Alignment.bottomCenter,
+        decoration: BoxDecoration(
+          color: kWhite,
+          borderRadius: BorderRadius.circular(10.0), // Same rounded corners
+        ),
+        child: Container(
           decoration: BoxDecoration(
-
-            border: Border.all(color: kgrey),
+            color: kContainerColor,
             borderRadius: BorderRadius.circular(10.0),
           ),
-          height: 180, // Adjust height as needed
-        ),
-        // Circular container at the bottom
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            height: 220,
-            // Adjust height as needed
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-
-              image: DecorationImage(
-                image: AssetImage('assets/img/curve.png',),
-
-              ),
-            ),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
+          height: 100,
         ),
-      ],
+      ),
     );
   }
-
-
 }
