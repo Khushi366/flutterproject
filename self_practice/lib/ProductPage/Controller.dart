@@ -31,7 +31,6 @@ class ProductDetailsController extends GetxController {
 
 
   // Use SharedPreference (Api Get data in sharedpreference)
-
   fetchProducts() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var productData = prefs.getString('productData');

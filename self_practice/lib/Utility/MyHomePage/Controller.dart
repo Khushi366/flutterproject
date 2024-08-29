@@ -54,6 +54,4 @@ class HomeController extends GetxController{
       update();
     }
   }
-
-
 }
