@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:petkart/Theme/AppColor.dart';
 import 'package:petkart/Theme/DeviceLayout.dart';
+import 'package:petkart/views/Utility/MyHomePage/demo.dart';
 import 'package:petkart/widgets/MyTextBox.dart';
 
 import 'Controller.dart';
@@ -120,17 +121,23 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget buildImage(String assetName) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color:kBorderColor.withOpacity(0.5), width: 3.0), // Outline border
-        borderRadius: BorderRadius.circular(10.0), // Rounded corners
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.0), // Same rounded corners
-        child: Image.asset(
-          assetName,
-          fit: BoxFit.cover,
-          width: double.infinity,// Ensure the image covers the container
+    return GestureDetector(
+      onTap: (){
+
+       Get.to(DemoScreen());
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color:kBorderColor.withOpacity(0.5), width: 3.0), // Outline border
+          borderRadius: BorderRadius.circular(10.0), // Rounded corners
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10.0), // Same rounded corners
+          child: Image.asset(
+            assetName,
+            fit: BoxFit.cover,
+            width: double.infinity,// Ensure the image covers the container
+          ),
         ),
       ),
     );
