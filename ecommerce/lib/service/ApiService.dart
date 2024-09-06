@@ -128,7 +128,7 @@ class ApiServices
   }
 
 
-  static Future<AllProduct> getProductById({required String pid}) async {
+  static Future<AllProduct>getProductById({required String pid}) async {
 
       var json = await ApiHandler.getRequest('${UrlResources.ALL_PRODUCTS}/$pid');
 

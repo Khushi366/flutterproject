@@ -8,9 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Controller.dart'; // Import your HomeController
 
 class HomeScreen extends StatelessWidget {
+  final  controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Get.put(HomeController());
 
     return Scaffold(
       appBar: AppBar(
