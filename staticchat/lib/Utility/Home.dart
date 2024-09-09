@@ -7,8 +7,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final String currentUserId = 'Lm1oDu8Y7T5i36gIANs1'; // Current user (Pinal)
-  final String otherUserId = 'xyJDjTDks4Q1hIi81T7r';  // Other user (Khushi)
+  final String currentUserId = 'Lm1oDu8Y7T5i36gIANs1';
+  final String otherUserId = 'xyJDjTDks4Q1hIi81T7r';
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,6 @@ class _ChatScreenState extends State<ChatScreen> {
             .collection('message')
             .snapshots()
             .asyncMap((snapshot) async {
-          print('Current User Messages Snapshot: ${snapshot.docs.length} documents found');
           List<QueryDocumentSnapshot> messages = snapshot.docs;
 
           // Fetch messages from the other user's chat with the current user
@@ -38,7 +37,6 @@ class _ChatScreenState extends State<ChatScreen> {
               .collection('message')
               .get();
 
-          print('Other User Messages Snapshot: ${otherUserMessagesSnapshot.docs.length} documents found');
           messages.addAll(otherUserMessagesSnapshot.docs);
 
           return messages;
@@ -49,7 +47,6 @@ class _ChatScreenState extends State<ChatScreen> {
           }
 
           final messages = snapshot.data!;
-          print('Messages Data: $messages');
 
           return ListView.builder(
             itemCount: messages.length,
@@ -57,9 +54,10 @@ class _ChatScreenState extends State<ChatScreen> {
               var message = messages[index]; // Correct data access
 
               // Extracting message data with null checks
-              var senderId = message['senderid'] ?? '';
-              var messageContent = message['msg'] ?? '';
-              var senderName = message['name'] ?? '';
+              var senderId = message['senderid'];
+              var receiverId = message['receiverid'];
+              var messageContent = message['msg'];
+              var senderName = message['name'];
 
               // Check if the current user is the sender of the message
               var isSender = senderId == currentUserId;
