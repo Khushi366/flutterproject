@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:staticchat/Utility/ChatPage.dart';
+class ChatPage extends StatefulWidget {
 
-class ChatScreen extends StatefulWidget {
+  var current="";
+  var other="";
+  var name="";
 
+  ChatPage({required this.current,required this.other,required this.name});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
-  final String currentUserId = 'Lm1oDu8Y7T5i36gIANs1';
-  final String otherUserId = 'xyJDjTDks4Q1hIi81T7r';
+class _ChatPageState extends State<ChatPage> {
+   String currentUserId = '';
+   String otherUserId = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      currentUserId = widget.current;
+      otherUserId = widget.other;
+    });
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firebase Chat App'),
-        backgroundColor: Color(0xFF011F4B), // Preferred color
+        title: Text(widget.name),// Preferred color
       ),
       body: Column(
         children: [
@@ -58,22 +70,7 @@ class _ChatScreenState extends State<ChatScreen> {
               },
             ),
           ),
-          Container(
-            child: Column(
-              children: [
-                ElevatedButton(onPressed: (){
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context)=>ChatPage(current: currentUserId, other: otherUserId,name:"Pinal"))
-                  );
-                }, child: Text("User 1 - "+currentUserId)),
-                ElevatedButton(onPressed: (){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context)=>ChatPage(current: otherUserId, other: currentUserId,name:"Khushi"))
-                  );
-                }, child: Text("User 2 - "+otherUserId)),
-              ],
-            ),
-          )
+
         ],
       ),
     );
