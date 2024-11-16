@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:ecommerceapp/Theme/AppColor.dart';
+import 'package:ecommerceapp/View/Utility/HomePage/Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -81,54 +82,6 @@ class LoginController extends GetxController {
     return true;
   }
 
-  // Future<bool> login(Map<String, dynamic> params) async {
-  //   isLoading.value = true;
-  //
-  //   try {
-  //     var url = Uri.parse('https://fakestoreapi.com/auth/login');
-  //
-  //     // Make the POST request
-  //     var response = await http.post(
-  //       url,
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: jsonEncode(params),
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       var responseData = jsonDecode(response.body);
-  //       log('Login success: $responseData');
-  //       SharedPreferences prefs = await SharedPreferences.getInstance();
-  //       prefs.setString("islogin", "yes");
-  //       Get.snackbar(
-  //         'Login Successful',
-  //         'Welcome!',
-  //         snackPosition: SnackPosition.BOTTOM,
-  //       );
-  //       isLoading.value = false;
-  //       return true;
-  //     } else {
-  //       // Handle non-200 responses, like incorrect credentials
-  //       log('Login failed with status: ${response.statusCode}');
-  //       Get.snackbar(
-  //         'Login Failed',
-  //         'Invalid credentials. Please try again.',
-  //         snackPosition: SnackPosition.BOTTOM,
-  //       );
-  //       isLoading.value = false;
-  //       return false;
-  //     }
-  //   } catch (error) {
-  //     // Catch any error that happens during the request (e.g., network issues)
-  //     log('Login error: $error');
-  //     Get.snackbar(
-  //       'Error',
-  //       'Failed to login. Please check your internet connection or try again later.',
-  //       snackPosition: SnackPosition.BOTTOM,
-  //     );
-  //     isLoading.value = false;
-  //     return false;
-  //   }
-  // }
 
   Future<bool> login(Map<String, dynamic> params) async {
     isLoading.value = true;

@@ -80,7 +80,7 @@ class ProductDetailsController extends GetxController {
         body: jsonEncode(params),
       );
       if (response.statusCode == 200) {
-        print('Add to cart successful: ${response.body}');
+        log('Add to cart successful: ${response.body}');
         // Show success snackbar using GetX
         Get.snackbar(
           'Success',
@@ -90,7 +90,7 @@ class ProductDetailsController extends GetxController {
         );
         return true; // Indicate success
       } else {
-        print('Failed to add to cart with status: ${response.statusCode}');
+        log('Failed to add to cart with status: ${response.statusCode}');
         // Show failure snackbar using GetX
         Get.snackbar(
           'Error',
