@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+import 'package:map/Theme/AppColor.dart';
 
  Widget customeTextBox({
   String? label,
@@ -21,6 +22,9 @@
       obscureText: obscureText,
       decoration: InputDecoration(
         suffixIcon: suffixIcon!=null?Icon(suffixIcon):null,
+       focusedBorder:OutlineInputBorder(
+       borderSide: const BorderSide(color: kBlack,),
+       ),
      //  label: Text(label),
       //  prefixIcon: Icon(icon),
       //  hintText: 'Type $label here',

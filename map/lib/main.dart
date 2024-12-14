@@ -30,7 +30,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map/RegisterPage/Screen.dart';
-
+import 'package:map/Theme/AppColor.dart';
 import 'Auth/AuthRepository.dart';
 import 'FirebaseExample/Register.dart';
 import 'LoginPage/Screen.dart';
@@ -62,7 +62,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        textSelectionTheme: TextSelectionThemeData(
+            cursorColor: kBlack
+        ),
         useMaterial3: true,
       ),
       //home: Home(),
