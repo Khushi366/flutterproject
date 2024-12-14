@@ -41,6 +41,9 @@ dependencies:
   path: ^1.8.3
   widget_to_marker:
   shared_preferences:
+  firebase_core:
+  get:
+  firebase_auth:
 
 dev_dependencies:
   flutter_test:

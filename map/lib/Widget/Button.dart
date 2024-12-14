@@ -3,24 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:map/Theme/AppColor.dart';
 
 class PrimaryButton extends StatelessWidget {
-  PrimaryButton({Key? key,this.height,this.width,required this.title,this.onTap,this.loading=false}) : super(key: key);
+  PrimaryButton({Key? key,this.height,this.width,required this.title,this.onTap,this.loading=false,this.color}) : super(key: key);
   double? height;
   double? width;
   String title;
   VoidCallback? onTap;
   bool loading;
+  Color? color;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
       child: InkWell(
         onTap: onTap,
         child: Container(
           height: height,
-          width: double.infinity,
+          width: width??double.infinity,
           decoration: BoxDecoration(
-            color: kPrimaryColor,
-            borderRadius: BorderRadius.circular(30),
+            color: color??kPrimaryColor,
+            borderRadius: BorderRadius.circular(10),
           ),
           child: loading ? Center(child: CircularProgressIndicator(color: Colors.white,)) :Center(
             child: Text(

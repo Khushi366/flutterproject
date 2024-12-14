@@ -26,11 +26,28 @@
 
 
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:map/RegisterPage/Screen.dart';
 
-import 'FromPage.dart';
+import 'Auth/AuthRepository.dart';
+import 'FirebaseExample/Register.dart';
+import 'LoginPage/Screen.dart';
+import 'SharedPref/AddData.dart';
 
-void main() {
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options:FirebaseOptions(
+        apiKey: "AIzaSyAAFKidPhL-BNJbtbU1usfyGjaYNoNl9PQ",
+        appId: "1:683214306246:android:493f37f1fb7e5b46ae10c7",
+        messagingSenderId: "683214306246",
+        projectId: "register-f7ae7",
+    )
+  );
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 
@@ -41,7 +58,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -49,7 +66,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: Home(),
-      home: FormPage(),
+     // home: FormPage(),
+      home: LoginScreen(),
     );
   }
 }

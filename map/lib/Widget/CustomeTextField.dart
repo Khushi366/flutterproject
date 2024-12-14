@@ -1,28 +1,33 @@
  import 'package:flutter/material.dart';
 
- Widget formField({
+ Widget customeTextBox({
   String? label,
   String ?hintText,
   ValueChanged? onChanged,
-  Icon? icon,
+  IconData icon = Icons.add,
   TextEditingController? controller,
   TextInputType? keyboard,
-  bool obscureText = false
+  bool obscureText = false,
+  IconData?suffixIcon,
+  VoidCallback? onTap,
 
-}) {
+ }) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
     child: TextField(
       controller: controller,
       onChanged: onChanged,
       keyboardType: keyboard,
       obscureText: obscureText,
       decoration: InputDecoration(
+        suffixIcon: suffixIcon!=null?Icon(suffixIcon):null,
      //  label: Text(label),
-        prefixIcon: icon,
+      //  prefixIcon: Icon(icon),
       //  hintText: 'Type $label here',
         hintText: hintText??"kkk",
-        border: const OutlineInputBorder(),
+        border:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       ),
     ),
   );

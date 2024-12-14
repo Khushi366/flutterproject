@@ -1,19 +1,19 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:map/MyHomePage/HomePage2.dart';
+import 'package:map/SharedPref/ShowData.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Widget/Button.dart';
-import 'Widget/CustomeTextField.dart';
+import '../Widget/Button.dart';
+import '../Widget/CustomeTextField.dart';
 
-class FormPage extends StatefulWidget {
-  const FormPage({super.key});
+class AddData extends StatefulWidget {
+  const AddData({super.key});
 
   @override
-  State<FormPage> createState() => _FormPageState();
+  State<AddData> createState() => _AddDataState();
 }
 
-class _FormPageState extends State<FormPage> {
+class _AddDataState extends State<AddData> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _email = TextEditingController();
@@ -64,18 +64,18 @@ class _FormPageState extends State<FormPage> {
       // await prefs.setString("email", email);
       // await  prefs.setString("password",pass);
 
-      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePageTwo()));
+      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ShowData()));
     }
 
     return Scaffold(
        body: Column(
          children: [
-           formField(
+           customeTextBox(
                controller: _email,
                label: '',
                hintText: "Enter Email Adderess"
            ),
-           formField(
+           customeTextBox(
                controller: _pass,
                label: '',
                hintText: "Enter Password",
