@@ -8,7 +8,7 @@ import 'ErrorHandler.dart';
 class ApiHandler {
 
   static Future<dynamic> postRequest(String url, {Map<String, String>? headers, body, encoding,}) async {
-       Uri uri = Uri.parse(url);
+    Uri uri = Uri.parse(url);
     try {
       log('Sending POST request to: $uri');
       log('Request body: $body');

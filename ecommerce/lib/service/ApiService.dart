@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:ecommerce/helper/ApiHandler.dart';
 import 'package:ecommerce/helper/ErrorHandler.dart';
 import 'package:ecommerce/model/AllCarts.dart';
 import 'package:ecommerce/model/Product.dart';
 import 'package:ecommerce/resources/UrlResources.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiServices
 {
@@ -70,14 +68,12 @@ class ApiServices
   //   }
   // }
 
-
   static Future<dynamic> login(Map<String, dynamic> params) async {
     return await ApiHandler.postRequest(
       UrlResources.LOGIN,
       body: json.encode(params),
     );
   }
-
 
   static Future<bool> addToCart(Map<String, dynamic> params) async {
     try {
@@ -135,11 +131,8 @@ class ApiServices
       log('API Response: $json');
 
       return AllProduct.fromJson(json);
-
   }
   //add to cart
-
-
 }
 
 
